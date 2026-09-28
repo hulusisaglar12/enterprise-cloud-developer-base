@@ -1,0 +1,65 @@
+{
+  "info": {
+    "name": "coupons",
+    "description": "Newman collection for the coupons API. Run with: newman run newman_tests/coupons_newman.json --env-var base_url=http://<api-id>.execute-api.localhost.localstack.cloud:4566/local",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /coupons_poc",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/coupons_poc",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "coupons_poc"
+          ]
+        }
+      },
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status code is 200', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test('Response is a non-empty array of coupons', function () {",
+              "    const responseJson = pm.response.json();",
+              "    pm.expect(responseJson).to.be.an('array');",
+              "    pm.expect(responseJson.length).to.be.above(0);",
+              "});",
+              "",
+              "pm.test('Each coupon has the expected fields', function () {",
+              "    const responseJson = pm.response.json();",
+              "    responseJson.forEach(function (coupon) {",
+              "        pm.expect(coupon).to.have.property('coupon_id');",
+              "        pm.expect(coupon).to.have.property('title');",
+              "        pm.expect(coupon).to.have.property('description');",
+              "        pm.expect(coupon).to.have.property('coupon_code');",
+              "        pm.expect(coupon).to.have.property('campaign_id');",
+              "        pm.expect(coupon).to.have.property('provider_id');",
+              "        pm.expect(coupon).to.have.property('provider_name');",
+              "        pm.expect(coupon).to.have.property('start_date');",
+              "        pm.expect(coupon).to.have.property('end_date');",
+              "    });",
+              "});"
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:4566/restapis/replace-with-api-id/local/_user_request_"
+    }
+  ]
+}
