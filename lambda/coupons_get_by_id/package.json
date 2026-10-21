@@ -11,6 +11,9 @@
   "engines": {
     "node": ">=10"
   },
+  "dependencies": {
+    "aws-sdk": "^2.1258.0"
+  },
   "devDependencies": {
     "eslint": "^7.6.0",
     "eslint-config-google": "^0.14.0",
