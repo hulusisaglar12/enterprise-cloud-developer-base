@@ -11,6 +11,11 @@
   "engines": {
     "node": ">=10"
   },
+  "dependencies": {
+    "aws-sdk": "^2.1258.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
+  },
   "devDependencies": {
     "eslint": "^7.6.0",
     "eslint-config-google": "^0.14.0",

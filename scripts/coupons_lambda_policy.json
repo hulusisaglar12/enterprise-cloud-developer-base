@@ -31,6 +31,16 @@
       ]
     },
     {
+      "Sid": "AllowDynamoDBReadForUsersTable",
+      "Effect": "Allow",
+      "Action": [
+        "dynamodb:GetItem"
+      ],
+      "Resource": [
+        "arn:aws:dynamodb:*:*:table/users"
+      ]
+    },
+    {
       "Sid": "AllowS3ForCouponsBucket",
       "Effect": "Allow",
       "Action": [
